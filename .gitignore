@@ -14,3 +14,4 @@ projects
 _history
 package-lock.json
 package.json
+Makefile
