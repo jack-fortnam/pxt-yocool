@@ -5,8 +5,8 @@ const enum DistanceUnit {
     INCH = 148, // Duration of echo round-trip in Microseconds (uS) for two inches, 343 m/s at sea level and 20°C
 }
 
-//% color=#0fbc11 icon="\u272a" block="MakerBit"
-//% category="MakerBit"
+//% color=#0fbc11 icon="\uf06e" block="Ultrasonic"
+//% category="Ultrasonic"
 namespace makerbit {
     const MICROBIT_MAKERBIT_ULTRASONIC_OBJECT_DETECTED_ID = 798;
     const MAX_ULTRASONIC_TRAVEL_TIME = 300 * DistanceUnit.CM;
@@ -31,7 +31,7 @@ namespace makerbit {
      * @param trig pin connected to trig, eg: DigitalPin.P5
      * @param echo pin connected to echo, eg: DigitalPin.P8
      */
-    //% subcategory="Ultrasonic"
+    
     //% blockId="makerbit_ultrasonic_connect"
     //% block="connect ultrasonic distance sensor"
     //% trig.fieldEditor="gridpicker"
@@ -81,7 +81,7 @@ namespace makerbit {
      * @param unit unit of distance, eg: DistanceUnit.CM
      * @param handler body code to run when the event is raised
      */
-    //% subcategory="Ultrasonic"
+    
     //% blockId=makerbit_ultrasonic_on_object_detected
     //% block="on object detected once within | %distance | %unit"
     //% weight=69
@@ -122,7 +122,7 @@ namespace makerbit {
      * -1 is returned when the device is not connected.
      * @param unit unit of distance, eg: DistanceUnit.CM
      */
-    //% subcategory="Ultrasonic"
+    
     //% blockId="makerbit_ultrasonic_distance"
     //% block="ultrasonic distance in %unit"
     //% weight=60
@@ -140,7 +140,7 @@ namespace makerbit {
      * @param distance distance to object, eg: 20
      * @param unit unit of distance, eg: DistanceUnit.CM
      */
-    //% subcategory="Ultrasonic"
+    
     //% blockId="makerbit_ultrasonic_less_than"
     //% block="ultrasonic distance is less than | %distance | %unit"
     //% weight=50
@@ -227,7 +227,7 @@ namespace makerbit {
 }/**
  * Blocks for driving the Kitronik Servo:Lite Board
  */
-//% weight=100 color=#00A654 icon="\uf1b9" block="Servo:Lite"
+//% weight=100 color=#00A654 icon="\uf1b9" block="Move"
 namespace kitronik_servo_lite {
     /**
      * **********************************************************************************************************************************************
@@ -247,6 +247,7 @@ namespace kitronik_servo_lite {
     //% blockId=kitronik_servolite_servos_bias
     //% block="bias %biasDriving"
     //% bias.min=0 bias.max=100
+    //% subcategory="Advanced"
     export function biasDriving(bias: number): void {
         if (bias > 100) {
             bias = 100;
@@ -338,6 +339,7 @@ namespace kitronik_servo_lite {
      */
     //% blockId=kitronik_servolite_servos_neutral
     //% block="goto neutral position"
+    //% subcategory="Advanced"
     export function neutral(): void {
         pins.servoWritePin(AnalogPin.P1, 90);
         pins.servoWritePin(AnalogPin.P2, 90);
@@ -409,7 +411,8 @@ namespace kitronik_servo_lite {
      * @param degPerSec : How many degrees per second the mini does.
      */
     //% blockId=kitronik_servolite_set_turn_speed_param
-    //% block="calibrate turn amount to %degPerSec|degrees per second" 
+    //% block="calibrate turn amount to %degPerSec|degrees per second"
+    //% subcategory="Advanced"
     export function setDegreesPerSecond(degPerSec: number): void {
         numberOfDegreesPerSec = degPerSec
     }
@@ -419,8 +422,9 @@ namespace kitronik_servo_lite {
      * This allows tuning for the move x distance commands
      * @param distPerSec : How many mm per second the mini does.
      */
-    //% blockId=kitronik_servolite_set_movement_speed_param 
+    //% blockId=kitronik_servolite_set_movement_speed_param
     //% block="calibrate drive amount to %distPerSec|mm per second"
+    //% subcategory="Advanced"
     export function setDistancePerSecond(distPerSec: number): void {
         distancePerSec = distPerSec
     }
@@ -466,7 +470,7 @@ enum NeoPixelMode {
 /**
  * Functions to operate NeoPixel strips.
  */
-//% weight=5 color=#2699BF icon="\uf110"
+//% weight=5 color=#2699BF icon="\uf0eb"
 namespace neopixel {
     /**
      * A NeoPixel strip
@@ -914,12 +918,12 @@ namespace neopixel {
      * @param pin the pin where the neopixel is connected.
      * @param numleds number of leds in the strip, eg: 24,30,60,64
      */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
+    //% blockId="neopixel_create" block="Connect NeoPixel"
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Strip {
+    export function create(pin: DigitalPin = DigitalPin.P0, numleds: number = 8, mode: NeoPixelMode = NeoPixelMode.RGB): Strip {
         let strip = new Strip();
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
