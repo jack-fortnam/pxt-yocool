@@ -1,6 +1,3 @@
-
-> Open this page at [https://jack-fortnam.github.io/pxt-yocool/](https://jack-fortnam.github.io/pxt-yocool/)
-
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
