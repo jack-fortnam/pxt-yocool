@@ -5,7 +5,7 @@ const enum DistanceUnit {
     INCH = 148, // Duration of echo round-trip in Microseconds (uS) for two inches, 343 m/s at sea level and 20°C
 }
 
-//% color=#0fbc11 icon="\uf06e" block="Ultrasonic"
+//% color=#120A8F icon="\uf06e" block="Ultrasonic"
 //% category="Ultrasonic"
 namespace makerbit {
     const MICROBIT_MAKERBIT_ULTRASONIC_OBJECT_DETECTED_ID = 798;
@@ -227,7 +227,7 @@ namespace makerbit {
 }/**
  * Blocks for driving the Kitronik Servo:Lite Board
  */
-//% weight=100 color=#00A654 icon="\uf1b9" block="Move"
+//% weight=100 color=#ffa60d icon="\uf1b9" block="Move"
 namespace kitronik_servo_lite {
     /**
      * **********************************************************************************************************************************************
@@ -614,7 +614,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% blockGap=8
         //% weight=80
-        //% parts="neopixel" advanced=true
+        //% parts="neopixel"
         setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
@@ -628,6 +628,7 @@ namespace neopixel {
         //% blockGap=8
         //% weight=5
         //% parts="neopixel" advanced=true
+        //% subcategory=Advanced
         setMatrixWidth(width: number) {
             this._matrixWidth = Math.min(this._length, width >> 0);
         }
@@ -643,6 +644,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% weight=4
         //% parts="neopixel" advanced=true
+        //% subcategory=Advanced
         setMatrixColor(x: number, y: number, rgb: number) {
             if (this._matrixWidth <= 0) return; // not a matrix, ignore
             x = x >> 0;
@@ -756,6 +758,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% parts="neopixel"
         //% blockSetVariable=range
+        //% subcategory=Advanced
         range(start: number, length: number): Strip {
             start = start >> 0;
             length = length >> 0;
@@ -982,6 +985,7 @@ namespace neopixel {
      * @param l luminosity from 0 to 99
      */
     //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
+    //% subcategory=Advanced
     export function hsl(h: number, s: number, l: number): number {
         h = Math.round(h);
         s = Math.round(s);
